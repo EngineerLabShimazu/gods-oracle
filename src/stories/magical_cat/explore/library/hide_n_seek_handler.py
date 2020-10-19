@@ -4,7 +4,12 @@ from ask_sdk_core.utils import is_intent_name
 
 class HideAndSeekIntentHandler(AbstractRequestHandler):
     def can_handle(self, handler_input):
-        return is_intent_name("HideAndSeekIntent")(handler_input)
+        session = handler_input.attributes_manager.session_attributes
+        scene = session.get('scene')
+        if not scene:
+            return False
+        return scene == 'explore.library' \
+            and is_intent_name("HideAndSeekIntent")(handler_input)
 
     def handle(self, handler_input):
         speech_text = """
@@ -24,6 +29,7 @@ class HideAndSeekIntentHandler(AbstractRequestHandler):
             speech_text).set_should_end_session(False)
 
         session = handler_input.attributes_manager.session_attributes
+        session['scene'] = 'end_flag'
         session['oracle_limit'] = session['oracle_limit'] - 1
 
         return handler_input.response_builder.response
