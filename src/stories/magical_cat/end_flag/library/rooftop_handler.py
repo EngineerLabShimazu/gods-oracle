@@ -43,8 +43,14 @@ class RooftopIntentHandler(AbstractRequestHandler):
         この盲目の生徒が、後に「盲目の狩人」と呼ばれるのは、また別のお話。
         <break time="3s"/>
         おしまい。
+        
+        <break time="3s"/>
+        オルぺ「どの物語を遊びまちゅか？」
         """
         handler_input.response_builder.speak(
             speech_text).set_should_end_session(False)
+
+        session = handler_input.attributes_manager.session_attributes
+        session['scene'] = 'gods_world'
 
         return handler_input.response_builder.response
