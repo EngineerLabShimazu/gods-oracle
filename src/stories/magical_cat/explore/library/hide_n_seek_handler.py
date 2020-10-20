@@ -29,7 +29,7 @@ class HideAndSeekIntentHandler(AbstractRequestHandler):
             speech_text).set_should_end_session(False)
 
         session = handler_input.attributes_manager.session_attributes
-        session['scene'] = 'end_flag'
+        session['scene'] = 'end_flag.library'
         session['oracle_limit'] = session['oracle_limit'] - 1
 
         return handler_input.response_builder.response
