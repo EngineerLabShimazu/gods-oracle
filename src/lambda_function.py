@@ -103,6 +103,7 @@ import stories.magical_cat.intro
 import stories.magical_cat.explore.intro.add_handlers
 import stories.magical_cat.explore.library.add_handlers
 import stories.magical_cat.explore.colosseum.add_handlers
+import stories.magical_cat.explore.rooftop.add_handlers
 
 sb.add_request_handler(HelpIntentHandler())
 sb.add_request_handler(CancelOrStopIntentHandler())
