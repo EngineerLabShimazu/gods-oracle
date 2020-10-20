@@ -74,7 +74,7 @@ class MagicalCatIntent(AbstractRequestHandler):
 
         session = handler_input.attributes_manager.session_attributes
         session['oracle_limit'] = 5
-        session['scene'] = 'explore'
+        session['scene'] = 'explore.intro'
 
         return handler_input.response_builder.response
 
