@@ -100,6 +100,7 @@ sb.add_request_handler(LaunchRequestHandler())
 # しかし各 scene で Handlerをadd_request_handler() したい これによってHandlerの名前がかぶる事を防ぐ
 # で、ErrorHandlerとかの前に、各Handlerをimportしたいので以下によってimportの順番を担保している
 import stories.magical_cat.intro
+import stories.magical_cat.explore.intro.add_handlers
 import stories.magical_cat.explore.library.add_handlers
 import stories.magical_cat.explore.colosseum.add_handlers
 
