@@ -1,8 +1,9 @@
 from ask_sdk_core.dispatch_components import AbstractRequestHandler
 from ask_sdk_core.utils import is_intent_name
+from util.skill_builder import sb
 
 
-class CatRatHunterIntroHandler(AbstractRequestHandler):
+class MagicalCatIntent(AbstractRequestHandler):
     def can_handle(self, handler_input):
         session = handler_input.attributes_manager.session_attributes
         scene = session.get('scene')
@@ -76,3 +77,6 @@ class CatRatHunterIntroHandler(AbstractRequestHandler):
         session['scene'] = 'explore'
 
         return handler_input.response_builder.response
+
+
+sb.add_request_handler(MagicalCatIntent())
