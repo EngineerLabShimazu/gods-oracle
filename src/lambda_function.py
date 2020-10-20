@@ -32,7 +32,7 @@ class GameOverHandler(AbstractRequestHandler):
     def can_handle(self, handler_input):
         session = handler_input.attributes_manager.session_attributes
         oracle_limit = session.get('oracle_limit')
-        if not oracle_limit:
+        if oracle_limit is None:
             return False
         return oracle_limit <= 0
 
@@ -46,6 +46,7 @@ class GameOverHandler(AbstractRequestHandler):
 
         session = handler_input.attributes_manager.session_attributes
         session['scene'] = 'gods_world'
+        session['oracle_limit'] = 5
 
         return handler_input.response_builder.response
 
