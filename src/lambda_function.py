@@ -28,6 +28,28 @@ class LaunchRequestHandler(AbstractRequestHandler):
         return handler_input.response_builder.response
 
 
+class GameOverHandler(AbstractRequestHandler):
+    def can_handle(self, handler_input):
+        session = handler_input.attributes_manager.session_attributes
+        oracle_limit = session.get('oracle_limit')
+        if not oracle_limit:
+            return False
+        return oracle_limit <= 0
+
+    def handle(self, handler_input):
+        speech_text = """
+        勇者「ぐわぁぁぁぁぁ」
+        <break time="3s"/>
+        オルぺ「おいおい、なにやってるんでちゅか。はぁ。どの物語をあそびまちゅか？」
+        """
+        handler_input.response_builder.speak(speech_text).ask(speech_text)
+
+        session = handler_input.attributes_manager.session_attributes
+        session['scene'] = 'gods_world'
+
+        return handler_input.response_builder.response
+
+
 class HelpIntentHandler(AbstractRequestHandler):
 
     def can_handle(self, handler_input):
@@ -95,6 +117,7 @@ class ErrorHandler(AbstractExceptionHandler):
 
 
 sb.add_request_handler(LaunchRequestHandler())
+sb.add_request_handler(GameOverHandler())
 
 # sb.lambda_handler()が lambda_handler(event, context)をラップしちゃっているので、静的にadd_request_handlerしなきゃいけない
 # しかし各 scene で Handlerをadd_request_handler() したい これによってHandlerの名前がかぶる事を防ぐ
