@@ -21,10 +21,10 @@ class RooftopIntentHandler(AbstractRequestHandler):
         <audio src="soundbank://soundlibrary/backgrounds_ambience/public_space/public_space_01"/>
         <audio src="soundbank://soundlibrary/kids/kids_05"/>
         <break time="3s"/>
-        盲目の生徒「わかったぞ！体育館の裏だ！」
+        盲目の生徒「わかったぞ！闘技場の倉庫の裏だ！」
         勇者「す、すごい！ありがとう！行こう！」
         <audio src="soundbank://soundlibrary/human/amzn_sfx_person_running_03"/>
-        勇者「先生、体育館の裏です！」
+        勇者「先生、闘技場の倉庫の裏です！」
         先生「え、わ、わかったわ！」
         <audio src="soundbank://soundlibrary/human/amzn_sfx_person_running_03"/>
         <break time="2s"/>

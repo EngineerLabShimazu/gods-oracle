@@ -1,0 +1,110 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "神のお告げ",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "HelloWorldIntent",
+                    "slots": [],
+                    "samples": [
+                        "こんにちは"
+                    ]
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "LibraryIntent",
+                    "slots": [],
+                    "samples": [
+                        "図書館に行く",
+                        "図書館"
+                    ]
+                },
+                {
+                    "name": "SilentStepIntent",
+                    "slots": [],
+                    "samples": [
+                        "シノビアシ",
+                        "しのびあし",
+                        "忍び足",
+                        "しのび足"
+                    ]
+                },
+                {
+                    "name": "HideAndSeekIntent",
+                    "slots": [],
+                    "samples": [
+                        "カクレンボ",
+                        "妖精のかくれんぼ",
+                        "妖精の隠れんぼ",
+                        "かくれんぼ"
+                    ]
+                },
+                {
+                    "name": "RooftopIntent",
+                    "slots": [],
+                    "samples": [
+                        "おくじょう",
+                        "屋上"
+                    ]
+                },
+                {
+                    "name": "MagicalCatIntent",
+                    "slots": [],
+                    "samples": [
+                        "魔法の猫プレシャ",
+                        "プレシャ",
+                        "magical cat",
+                        "マジカルキャット",
+                        "まほうのねこ",
+                        "魔法の猫"
+                    ]
+                },
+                {
+                    "name": "ColosseumIntent",
+                    "slots": [],
+                    "samples": [
+                        "闘技場",
+                        "コロシアム"
+                    ]
+                },
+                {
+                    "name": "WarehouseIntent",
+                    "slots": [],
+                    "samples": [
+                        "倉庫"
+                    ]
+                },
+                {
+                    "name": "WaitingRoomIntent",
+                    "slots": [],
+                    "samples": [
+                        "控室"
+                    ]
+                },
+                {
+                    "name": "AudienceSeatIntent",
+                    "slots": [],
+                    "samples": [
+                        "客席"
+                    ]
+                }
+            ],
+            "types": []
+        }
+    }
+}
