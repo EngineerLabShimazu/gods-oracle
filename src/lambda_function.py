@@ -38,9 +38,13 @@ class GameOverHandler(AbstractRequestHandler):
 
     def handle(self, handler_input):
         speech_text = """
-        勇者「ぐわぁぁぁぁぁ」
+        <audio src="soundbank://soundlibrary/scifi/amzn_sfx_scifi_explosion_2x_01"/>
+        勇者「ぐわあーーー！」
         <break time="3s"/>
-        オルぺ「おいおい、なにやってるんでちゅか。はぁ。どの物語をあそびまちゅか？」
+        オルぺ「おいおい、なにやってるんでちゅか。はぁ。ゲームオーバーでちゅ。
+        <break time="1s"/>
+        <audio src="soundbank://soundlibrary/ui/gameshow/amzn_ui_sfx_gameshow_intro_01"/>
+        どの物語をあそびまちゅか？」
         """
         handler_input.response_builder.speak(speech_text).ask(speech_text)
 
