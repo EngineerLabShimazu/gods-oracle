@@ -1,5 +1,7 @@
 from ask_sdk_core.dispatch_components import AbstractRequestHandler
 from ask_sdk_core.utils import is_intent_name
+from ask_sdk_model import ui
+from util import assets
 
 
 class YesIntentHandler(AbstractRequestHandler):
@@ -53,5 +55,18 @@ class YesIntentHandler(AbstractRequestHandler):
         session = handler_input.attributes_manager.session_attributes
         session['scene'] = 'gods_world'
         session['re_ask'] = 'オルぺ「どの課題に挑戦しまちゅか？」'
+
+        image_url = assets.get_image(
+            'humans/blind_hunter/blind_hunter_found_512')
+        handler_input.response_builder.set_card(
+            ui.StandardCard(
+                title='盲目の生徒',
+                text='「わかったぞ！闘技場の倉庫の裏だ！」',
+                image=ui.Image(
+                    small_image_url=image_url,
+                    large_image_url=image_url
+                )
+            )
+        )
 
         return handler_input.response_builder.response
