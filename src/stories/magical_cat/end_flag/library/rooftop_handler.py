@@ -52,5 +52,6 @@ class RooftopIntentHandler(AbstractRequestHandler):
 
         session = handler_input.attributes_manager.session_attributes
         session['scene'] = 'gods_world'
+        session['re_ask'] = 'オルぺ「どの物語を遊びまちゅか？」'
 
         return handler_input.response_builder.response
