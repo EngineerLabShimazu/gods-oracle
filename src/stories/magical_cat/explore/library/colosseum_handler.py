@@ -23,5 +23,6 @@ class ColosseumIntentHandler(AbstractRequestHandler):
         session = handler_input.attributes_manager.session_attributes
         session['scene'] = 'explore.colosseum'
         session['oracle_limit'] = session['oracle_limit'] - 1
+        session['re_ask'] = '勇者「手がかりとなるものはどれだろう、、、？」'
 
         return handler_input.response_builder.response
