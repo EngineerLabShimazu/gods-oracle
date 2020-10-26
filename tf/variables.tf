@@ -7,3 +7,4 @@ variable "event_source_token" {}
 variable "sfn_role" {}
 variable "assets_url_prefix" {}
 variable "bucket_region" {}
+variable "bucket_name" {}

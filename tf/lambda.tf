@@ -25,6 +25,7 @@ module "fgo_alexa_endpoint" {
   environment = {
     "ASSETS_URL_PREFIX" = var.assets_url_prefix
     "BUCKET_REGION" = var.bucket_region
+    "BUCKET_NAME" = var.bucket_name
   }
   external_module_layer_arn = data.aws_lambda_layer_version.external_module_layer.arn
   role = var.lambda_role
