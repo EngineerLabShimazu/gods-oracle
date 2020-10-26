@@ -24,6 +24,7 @@ class LaunchRequestHandler(AbstractRequestHandler):
 
         session = handler_input.attributes_manager.session_attributes
         session['scene'] = 'gods_world'
+        session['re_ask'] = 'どの物語を遊びまちゅか？'
 
         return handler_input.response_builder.response
 
@@ -51,8 +52,22 @@ class GameOverHandler(AbstractRequestHandler):
         session = handler_input.attributes_manager.session_attributes
         session['scene'] = 'gods_world'
         session['oracle_limit'] = 5
+        session['re_ask'] = 'どの物語を遊びまちゅか？'
 
         return handler_input.response_builder.response
+
+
+class ReAskHandler(AbstractRequestHandler):
+    def can_handle(self, handler_input):
+        session = handler_input.attributes_manager.session_attributes
+        re_ask = session.get('re_ask', False)
+        return re_ask
+
+    def handle(self, handler_input):
+        session = handler_input.attributes_manager.session_attributes
+        speak_output = session['re_ask']
+        handler_input.response_builder.set_should_end_session(False)
+        return handler_input.response_builder.speak(speak_output).response
 
 
 class HelpIntentHandler(AbstractRequestHandler):
@@ -93,16 +108,21 @@ class SessionEndedRequestHandler(AbstractRequestHandler):
 # for your intents by defining them above, then also adding them to the request
 # handler chain below.
 class IntentReflectorHandler(AbstractRequestHandler):
-    """Handler for Hello World Intent."""
 
     def can_handle(self, handler_input):
         return is_request_type("IntentRequest")(handler_input)
 
     def handle(self, handler_input):
         intent_name = handler_input.request_envelope.request.intent.name
-        speech_text = ("You just triggered {}").format(intent_name)
+        speech_text = f"{intent_name}は現在の文脈において答えられる内容ではありません。"
+        session = handler_input.attributes_manager.session_attributes
+
+        re_ask = session.get('re_ask')
+        if re_ask:
+            speech_text += re_ask
+
         handler_input.response_builder.speak(
-            speech_text).set_should_end_session(True)
+            speech_text).set_should_end_session(False)
         return handler_input.response_builder.response
 
 
@@ -138,6 +158,7 @@ sb.add_request_handler(HelpIntentHandler())
 sb.add_request_handler(CancelOrStopIntentHandler())
 sb.add_request_handler(SessionEndedRequestHandler())
 
+sb.add_request_handler(ReAskHandler())
 sb.add_request_handler(IntentReflectorHandler())
 sb.add_exception_handler(ErrorHandler())
 handler = sb.lambda_handler()
