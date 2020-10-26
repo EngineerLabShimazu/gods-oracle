@@ -38,13 +38,13 @@ class LaunchRequestHandler(AbstractRequestHandler):
             これから見習い神の君には、神ランクを上げてもらうために、僕が出す課題に挑戦してもらうよ。
             課題というのは、簡単にいうと人助けのことでちゅ。
             じゃあさっそく、、、
+            <break time="1s"/>
             どの課題に挑戦しまちゅか？
             """
+            ask_text = 'どの課題に挑戦しまちゅか？'
         else:
-            speech_text = """
-            どの課題に挑戦しまちゅか？
-            """
-        handler_input.response_builder.speak(speech_text).ask(speech_text)
+            speech_text = ask_text = 'どの課題に挑戦しまちゅか？'
+        handler_input.response_builder.speak(speech_text).ask(ask_text)
 
         session = handler_input.attributes_manager.session_attributes
         session['scene'] = 'gods_world'
