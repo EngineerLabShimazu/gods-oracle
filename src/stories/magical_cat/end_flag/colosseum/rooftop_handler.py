@@ -45,7 +45,8 @@ class RooftopIntentHandler(AbstractRequestHandler):
         おしまい。
         
         <break time="3s"/>
-        オルぺ「どの課題に挑戦しまちゅか？」
+        オルぺ「課題クリアおめでとう！君、才能ありまちゅね。
+        次は、どの課題に挑戦しまちゅか？」
         """
         handler_input.response_builder.speak(
             speech_text).set_should_end_session(False)
