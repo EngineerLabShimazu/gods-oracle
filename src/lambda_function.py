@@ -5,7 +5,9 @@ from datetime import datetime
 from ask_sdk_core.dispatch_components import AbstractRequestHandler
 from ask_sdk_core.dispatch_components import AbstractExceptionHandler
 from ask_sdk_core.utils import is_request_type, is_intent_name
+from ask_sdk_model import ui
 
+from util import assets
 from util.skill_builder import sb
 
 logger = logging.getLogger(__name__)
@@ -34,21 +36,36 @@ class LaunchRequestHandler(AbstractRequestHandler):
         if is_first_launch_skill(handler_input):
             save_first_launch_skill_datetime(handler_input)
             speech_text = """
-            はじめまちて。ぼくはオルぺ。
+            オルぺ「はじめまちて。ぼくはオルぺ。
             これから見習い神の君には、神ランクを上げてもらうために、僕が出す課題に挑戦してもらうよ。
             課題というのは、簡単にいうと人助けのことでちゅ。
             じゃあさっそく、、、
             <break time="1s"/>
             どの課題に挑戦しまちゅか？
+            」
             """
-            ask_text = 'どの課題に挑戦しまちゅか？'
+            ask_text = 'オルぺ「どの課題に挑戦しまちゅか？」'
         else:
-            speech_text = ask_text = 'どの課題に挑戦しまちゅか？'
+            speech_text = ask_text = 'オルぺ「どの課題に挑戦しまちゅか？」'
         handler_input.response_builder.speak(speech_text).ask(ask_text)
 
         session = handler_input.attributes_manager.session_attributes
         session['scene'] = 'gods_world'
-        session['re_ask'] = 'どの課題に挑戦しまちゅか？'
+        session['re_ask'] = ask_text
+
+        image_url = assets.get_image('gods/orphe/orphe-stand')
+        handler_input.response_builder.set_card(
+            ui.StandardCard(
+                title='どの課題に挑戦しまちゅか？',
+                text='・盲目の狩人\r\n'
+                     '・？？？\r\n'
+                     '・？？？',
+                image=ui.Image(
+                    small_image_url=image_url,
+                    large_image_url=image_url
+                )
+            )
+        )
 
         return handler_input.response_builder.response
 
