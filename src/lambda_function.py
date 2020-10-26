@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import logging
+from datetime import datetime
 
 from ask_sdk_core.dispatch_components import AbstractRequestHandler
 from ask_sdk_core.dispatch_components import AbstractExceptionHandler
@@ -11,19 +12,38 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
 
+def is_first_launch_skill(handler_input):
+    attr = handler_input.attributes_manager.persistent_attributes
+    if not attr:
+        return True
+    return 'first_launch_skill_datetime' not in attr
+
+
+def save_first_launch_skill_flag(handler_input):
+    attr = handler_input.attributes_manager.persistent_attributes
+    attr['first_launch_skill_datetime'] = datetime.today().isoformat()
+    handler_input.attributes_manager.save_persistent_attributes()
+
+
 class LaunchRequestHandler(AbstractRequestHandler):
 
     def can_handle(self, handler_input):
         return is_request_type("LaunchRequest")(handler_input)
 
     def handle(self, handler_input):
-        speech_text = """
-        はじめまちて。ぼくはオルぺ。
-        これから見習い神の君には、神ランクを上げてもらうために、僕が出す課題に挑戦してもらうよ。
-        課題というのは、簡単にいうと人助けのことでちゅ。
-        じゃあさっそく、、、
-        どの課題に挑戦しまちゅか？
-        """
+        if is_first_launch_skill(handler_input):
+            save_first_launch_skill_flag(handler_input)
+            speech_text = """
+            はじめまちて。ぼくはオルぺ。
+            これから見習い神の君には、神ランクを上げてもらうために、僕が出す課題に挑戦してもらうよ。
+            課題というのは、簡単にいうと人助けのことでちゅ。
+            じゃあさっそく、、、
+            どの課題に挑戦しまちゅか？
+            """
+        else:
+            speech_text = """
+            どの課題に挑戦しまちゅか？
+            """
         handler_input.response_builder.speak(speech_text).ask(speech_text)
 
         session = handler_input.attributes_manager.session_attributes
