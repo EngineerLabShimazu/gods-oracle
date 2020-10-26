@@ -14,7 +14,8 @@ class BlindHunterHandler(AbstractRequestHandler):
 
     def handle(self, handler_input):
         speech_text = """
-        「盲目の狩人」。始まります。
+        オルぺ「盲目の狩人。この課題は、お告げ7回以内にクリアしてくだちゃい。それでは、いってらっちゃい。」
+        <audio src="soundbank://soundlibrary/magic_spells/magic_spells_09"/>
         勇者「ここがソルジャースクールか。」
         受付「ようこそソルジャースクールへ。見学ですか？」
         勇者「はい。」
@@ -73,7 +74,7 @@ class BlindHunterHandler(AbstractRequestHandler):
             speech_text).set_should_end_session(False)
 
         session = handler_input.attributes_manager.session_attributes
-        session['oracle_limit'] = 5
+        session['oracle_limit'] = 7
         session['scene'] = 'explore.intro'
         session['re_ask'] = ' 勇者「神よ！私はどうすればよいでしょうか？」'
 
