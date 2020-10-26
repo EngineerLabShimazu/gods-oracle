@@ -5,6 +5,7 @@ from .library_handler import LibraryIntentHandler
 from .audience_seat_handler import AudienceSeatHandler
 from .waiting_room_handler import WaitingRoomHandler
 from .warehouse_handler import WarehouseHandler
+from .yes_handler import YesIntentHandler
 
 for h in [
     RooftopIntentHandler,
@@ -12,6 +13,7 @@ for h in [
     LibraryIntentHandler,
     AudienceSeatHandler,
     WaitingRoomHandler,
-    WarehouseHandler
+    WarehouseHandler,
+    YesIntentHandler,
           ]:
     sb.add_request_handler(h())
