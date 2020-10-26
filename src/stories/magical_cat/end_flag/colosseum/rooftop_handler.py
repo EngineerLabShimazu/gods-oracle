@@ -45,13 +45,13 @@ class RooftopIntentHandler(AbstractRequestHandler):
         おしまい。
         
         <break time="3s"/>
-        オルぺ「どの物語を遊びまちゅか？」
+        オルぺ「どの課題に挑戦しまちゅか？」
         """
         handler_input.response_builder.speak(
             speech_text).set_should_end_session(False)
 
         session = handler_input.attributes_manager.session_attributes
         session['scene'] = 'gods_world'
-        session['re_ask'] = 'オルぺ「どの物語を遊びまちゅか？」'
+        session['re_ask'] = 'オルぺ「どの課題に挑戦しまちゅか？」'
 
         return handler_input.response_builder.response

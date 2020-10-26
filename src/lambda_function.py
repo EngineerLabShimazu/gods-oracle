@@ -18,13 +18,17 @@ class LaunchRequestHandler(AbstractRequestHandler):
 
     def handle(self, handler_input):
         speech_text = """
-        どの物語を遊びまちゅか？
+        はじめまちて。ぼくはオルぺ。
+        これから見習い神の君には、神ランクを上げてもらうために、僕が出す課題に挑戦してもらうよ。
+        課題というのは、簡単にいうと人助けのことでちゅ。
+        じゃあさっそく、、、
+        どの課題に挑戦しまちゅか？
         """
         handler_input.response_builder.speak(speech_text).ask(speech_text)
 
         session = handler_input.attributes_manager.session_attributes
         session['scene'] = 'gods_world'
-        session['re_ask'] = 'どの物語を遊びまちゅか？'
+        session['re_ask'] = 'どの課題に挑戦しまちゅか？'
 
         return handler_input.response_builder.response
 
@@ -45,14 +49,14 @@ class GameOverHandler(AbstractRequestHandler):
         オルぺ「おいおい、なにやってるんでちゅか。はぁ。ゲームオーバーでちゅ。
         <break time="1s"/>
         <audio src="soundbank://soundlibrary/ui/gameshow/amzn_ui_sfx_gameshow_intro_01"/>
-        どの物語をあそびまちゅか？」
+        どの課題に挑戦しまちゅか？」
         """
         handler_input.response_builder.speak(speech_text).ask(speech_text)
 
         session = handler_input.attributes_manager.session_attributes
         session['scene'] = 'gods_world'
         session['oracle_limit'] = 5
-        session['re_ask'] = 'どの物語を遊びまちゅか？'
+        session['re_ask'] = 'どの課題に挑戦しまちゅか？'
 
         return handler_input.response_builder.response
 
