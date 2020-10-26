@@ -76,7 +76,13 @@ class HelpIntentHandler(AbstractRequestHandler):
         return is_intent_name("AMAZON.HelpIntent")(handler_input)
 
     def handle(self, handler_input):
-        speech_text = "「こんにちは」か「ヘルプ」とおっしゃっていただけます。"
+        speech_text = """
+        このスキルでは、あなたが神となってあなたの事を信仰している「勇者」を導いて頂きます。勇者に「お告げ」を与え、困っている人を救いましょう。
+        """
+        session = handler_input.attributes_manager.session_attributes
+        re_ask = session['re_ask']
+        if re_ask:
+            speech_text += '<break time="2s"/>' + re_ask
         handler_input.response_builder.speak(speech_text).ask(speech_text)
         return handler_input.response_builder.response
 
