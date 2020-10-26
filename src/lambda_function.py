@@ -19,7 +19,7 @@ def is_first_launch_skill(handler_input):
     return 'first_launch_skill_datetime' not in attr
 
 
-def save_first_launch_skill_flag(handler_input):
+def save_first_launch_skill_datetime(handler_input):
     attr = handler_input.attributes_manager.persistent_attributes
     attr['first_launch_skill_datetime'] = datetime.today().isoformat()
     handler_input.attributes_manager.save_persistent_attributes()
@@ -32,7 +32,7 @@ class LaunchRequestHandler(AbstractRequestHandler):
 
     def handle(self, handler_input):
         if is_first_launch_skill(handler_input):
-            save_first_launch_skill_flag(handler_input)
+            save_first_launch_skill_datetime(handler_input)
             speech_text = """
             はじめまちて。ぼくはオルぺ。
             これから見習い神の君には、神ランクを上げてもらうために、僕が出す課題に挑戦してもらうよ。
