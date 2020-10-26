@@ -3,18 +3,18 @@ from ask_sdk_core.utils import is_intent_name
 from util.skill_builder import sb
 
 
-class MagicalCatIntent(AbstractRequestHandler):
+class BlindHunterHandler(AbstractRequestHandler):
     def can_handle(self, handler_input):
         session = handler_input.attributes_manager.session_attributes
         scene = session.get('scene')
         if not scene:
             return False
         return scene == 'gods_world' and \
-            is_intent_name("MagicalCatIntent")(handler_input)
+            is_intent_name("BlindHunterIntent")(handler_input)
 
     def handle(self, handler_input):
         speech_text = """
-        「猫とネズミと盲目の狩人」。始まります。
+        「盲目の狩人」。始まります。
         勇者「ここがソルジャースクールか。」
         受付「ようこそソルジャースクールへ。見学ですか？」
         勇者「はい。」
@@ -80,4 +80,4 @@ class MagicalCatIntent(AbstractRequestHandler):
         return handler_input.response_builder.response
 
 
-sb.add_request_handler(MagicalCatIntent())
+sb.add_request_handler(BlindHunterHandler())
