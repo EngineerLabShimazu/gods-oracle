@@ -78,6 +78,7 @@
                     "name": "ColosseumIntent",
                     "slots": [],
                     "samples": [
+                        "とうぎじょう",
                         "闘技場",
                         "コロシアム"
                     ]
@@ -86,6 +87,7 @@
                     "name": "WarehouseIntent",
                     "slots": [],
                     "samples": [
+                        "そうこ",
                         "倉庫"
                     ]
                 },
@@ -93,6 +95,7 @@
                     "name": "WaitingRoomIntent",
                     "slots": [],
                     "samples": [
+                        "ひかえしつ",
                         "控室"
                     ]
                 },
@@ -100,7 +103,38 @@
                     "name": "AudienceSeatIntent",
                     "slots": [],
                     "samples": [
+                        "きゃくせき",
+                        "観客席",
                         "客席"
+                    ]
+                },
+                {
+                    "name": "AMAZON.YesIntent",
+                    "samples": []
+                },
+                {
+                    "name": "GoIntent",
+                    "slots": [],
+                    "samples": [
+                        "いきたい",
+                        "行きたい",
+                        "いきたいです",
+                        "いっちゃいます",
+                        "いきます",
+                        "いく",
+                        "行きたいです",
+                        "行っちゃいます",
+                        "行こう",
+                        "行きます",
+                        "行く"
+                    ]
+                },
+                {
+                    "name": "BlindHunterIntent",
+                    "slots": [],
+                    "samples": [
+                        "もうもくのかりうど",
+                        "盲目の狩人"
                     ]
                 }
             ],
