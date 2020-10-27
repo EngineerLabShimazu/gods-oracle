@@ -80,7 +80,7 @@ class BlindHunterHandler(AbstractRequestHandler):
         session['scene'] = 'explore.intro'
         session['re_ask'] = ' 勇者「神よ！私はどうすればよいでしょうか？」'
 
-        image_url = assets.get_image('humans/here/hero_stand_512')
+        image_url = assets.get_image('humans/hero/hero_stand_512')
         handler_input.response_builder.set_card(
             ui.StandardCard(
                 title='勇者',
