@@ -135,8 +135,21 @@ class CancelOrStopIntentHandler(AbstractRequestHandler):
                 is_intent_name("AMAZON.StopIntent")(handler_input))
 
     def handle(self, handler_input):
-        speech_text = "Goodbye!"
+        speech_text = "オルぺ「また挑戦してね！」"
         handler_input.response_builder.speak(speech_text)
+
+        image_url = assets.get_image('gods/orphe/orphe-stand')
+        handler_input.response_builder.set_card(
+            ui.StandardCard(
+                title='オルぺ',
+                text='「また挑戦ちてね！」',
+                image=ui.Image(
+                    small_image_url=image_url,
+                    large_image_url=image_url
+                )
+            )
+        )
+
         return handler_input.response_builder.response
 
 
