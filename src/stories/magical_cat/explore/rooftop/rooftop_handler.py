@@ -29,11 +29,13 @@ class RooftopIntentHandler(AbstractRequestHandler):
         session['re_ask'] = '勇者「神よ、次はどうすればよろしいでしょうか？」'
 
         image_url = assets.get_image(
-            'humans/blind_hunter/blind_hunter_stand_512')
+            'humans/hero/hero_stand_512')
         handler_input.response_builder.set_card(
             ui.StandardCard(
-                title='盲目の生徒',
-                text='「ん？すまない。手がかりは何も掴めていない。。。」',
+                title='勇者「神よ、次はどうすればよろしいでしょうか？」',
+                text='・図書館へ行く\r\n'
+                     '・闘技場へ行く\r\n'
+                     '・屋上へ行く',
                 image=ui.Image(
                     small_image_url=image_url,
                     large_image_url=image_url
