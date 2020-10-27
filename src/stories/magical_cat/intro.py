@@ -1,6 +1,8 @@
 from ask_sdk_core.dispatch_components import AbstractRequestHandler
 from ask_sdk_core.utils import is_intent_name
 from util.skill_builder import sb
+from ask_sdk_model import ui
+from util import assets
 
 
 class BlindHunterHandler(AbstractRequestHandler):
@@ -77,6 +79,18 @@ class BlindHunterHandler(AbstractRequestHandler):
         session['oracle_limit'] = 7
         session['scene'] = 'explore.intro'
         session['re_ask'] = ' 勇者「神よ！私はどうすればよいでしょうか？」'
+
+        image_url = assets.get_image('humans/here/hero_stand_512')
+        handler_input.response_builder.set_card(
+            ui.StandardCard(
+                title='勇者',
+                text='「神よ！私はどうすればよいでしょうか？」',
+                image=ui.Image(
+                    small_image_url=image_url,
+                    large_image_url=image_url
+                )
+            )
+        )
 
         return handler_input.response_builder.response
 

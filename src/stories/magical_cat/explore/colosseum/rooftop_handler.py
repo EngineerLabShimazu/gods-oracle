@@ -1,9 +1,10 @@
 from ask_sdk_core.dispatch_components import AbstractRequestHandler
 from ask_sdk_core.utils import is_intent_name
+from ask_sdk_model import ui
+from util import assets
 
 
 class RooftopIntentHandler(AbstractRequestHandler):
-    """Handler for Hello World Intent."""
 
     def can_handle(self, handler_input):
         session = handler_input.attributes_manager.session_attributes
@@ -30,5 +31,18 @@ class RooftopIntentHandler(AbstractRequestHandler):
         session['oracle_limit'] = session['oracle_limit'] - 1
         session['scene'] = 'explore.rooftop'
         session['re_ask'] = '勇者「神よ、次はどうすればよろしいでしょうか？」'
+
+        image_url = assets.get_image(
+            'humans/blind_hunter/blind_hunter_stand_512')
+        handler_input.response_builder.set_card(
+            ui.StandardCard(
+                title='盲目の生徒',
+                text='「すまない。耳をすましているが、何も聞こえない。。。」',
+                image=ui.Image(
+                    small_image_url=image_url,
+                    large_image_url=image_url
+                )
+            )
+        )
 
         return handler_input.response_builder.response
