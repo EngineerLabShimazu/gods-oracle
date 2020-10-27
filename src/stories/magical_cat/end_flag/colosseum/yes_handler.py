@@ -8,8 +8,9 @@ class YesIntentHandler(AbstractRequestHandler):
         scene = session.get('scene')
         if not scene:
             return False
-        return scene == 'end_flag.colosseum' and \
-            is_intent_name("AMAZON.YesIntent")(handler_input)
+        return scene == 'end_flag.colosseum' and (
+                is_intent_name("AMAZON.YesIntent")(handler_input) or
+                is_intent_name("AMAZON.GoIntent")(handler_input))
 
     def handle(self, handler_input):
         speech_text = """
