@@ -33,7 +33,7 @@ class LibraryIntentHandler(AbstractRequestHandler):
             'humans/hero/hero_stand_512')
         handler_input.response_builder.set_card(
             ui.StandardCard(
-                title='勇者「手がかりとなるものはどれだろう、、、？」',
+                title='勇者「役に立ちそうな本はどれだろう、、、？」',
                 text='・妖精のかくれんぼ\r\n'
                      '・スキル「シノビアシ」\r\n'
                      '・魔法の猫「プレシャ」\r\n'
