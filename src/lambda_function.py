@@ -119,6 +119,7 @@ class HelpIntentHandler(AbstractRequestHandler):
     def handle(self, handler_input):
         speech_text = """
         このスキルでは、あなたが神となってあなたの事を信仰している「勇者」を導いて頂きます。勇者に「お告げ」を与え、困っている人を救いましょう。
+        お告げすることのできる内容は場合によって異なるため、スキル説明などを確認してください。
         """
         session = handler_input.attributes_manager.session_attributes
         re_ask = session['re_ask']
